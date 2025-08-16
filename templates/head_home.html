@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+    <main><br>
+        <ul class="nav flex-column MainMenu">
+            <h1 class="h1"><u>WELCOME TO E-COURT MANAGEMENT SYSTEM</u></h1><br>
+            <h3>For Searching Details Of A Particular Case</h3><br>
+            <li class="nav-item">
+                <a href="/home/case_details" class="nav-link " id="Cnr" >
+                    Case Details
+                </a>
+            </li><br><br>
+            <h3>For Filtering Cases:</h3><br>
+            <li class="nav-item">
+                <a href="/home/filter_cases" class="nav-link" id="Cavet">
+                    Filter Cases
+                </a>
+            </li><br><br>
+            <h3>For Entering Or Updating A Case:</h3><br>
+            <li class="nav-item">
+                <a href="/home/create_a_new_case" class="nav-link" id="Location">
+                    Create A New Case
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/home/search_case" class="nav-link" id="upd">
+                    Update A Case
+                </a>
+            </li><br><br>
+            <h3>For Adding New Admins:</h3><br>
+            <li class="nav-item">
+                <a href="/admins" class="nav-link" id="adm">
+                    Add Admins
+                </a>
+            </li>
+        </ul>
+    </main>
+{% endblock %}

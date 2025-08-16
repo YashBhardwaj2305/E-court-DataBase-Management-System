@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+{% block content %}
+<main>
+    <div class="ci_container">
+        <h2 class="ci-heading">Case Information</h2>
+
+        <!-- Case Details Section -->
+        <div class="ci-section">
+            <h3 class="ci-title" onclick="toggleContent(this)">Case Details</h3>
+            <div class="ci-content">
+                <p>CNR No: {{ case_details.cnr_no }}</p>
+                <p>Case No: {{ case_details.case_no }}</p>
+                <p>Status ID: {{ case_details.status_id }}</p>
+                <p>Status: {{ case_details.status }}</p>
+                <p>FIR No: {{ case_details.fir_no }}</p>
+                <p>File Name: {{ case_details.file_name }}</p>
+            </div>
+        </div>
+
+        <!-- Prosecutor Details Section -->
+        <div class="ci-section">
+            <h3 class="ci-title" onclick="toggleContent(this)">Prosecutor Details</h3>
+            <div class="ci-content">
+                <p>Name: {{ prosecutor.name }}</p>
+                <p>Age: {{ prosecutor.age }}</p>
+                <p>Sex: {{ prosecutor.sex }}</p>
+                <p>Address: {{ prosecutor.address }}</p>
+            </div>
+        </div>
+
+        <!-- Phone Numbers Section -->
+        <div class="ci-section">
+            <h3 class="ci-title" onclick="toggleContent(this)">Phone Numbers</h3>
+            <div class="ci-content">
+                <ul>
+                    {% for phone in phone_numbers %}
+                        <li>{{ phone.number }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Police Station Details Section -->
+        <div class="ci-section">
+            <h3 class="ci-title" onclick="toggleContent(this)">Police Station Details</h3>
+            <div class="ci-content">
+                <p>Station Name: {{ police_station.station_name }}</p>
+                <p>Inspector Name: {{ police_station.inspector_name }}</p>
+                <p>FIR Date: {{ police_station.fir_date }}</p>
+            </div>
+        </div>
+
+        <!-- Case History Section -->
+        <div class="ci-section">
+            <h3 class="ci-title" onclick="toggleContent(this)">Case History</h3>
+            <div class="ci-content">
+                <p>Incident Date: {{ case_history.incident_date }}</p>
+                <p>Incident Time: {{ case_history.incident_time }}</p>
+                <p>Location: {{ case_history.incident_location }}</p>
+                <p>Defence Name: {{ case_history.defence_name }}</p>
+            </div>
+        </div>
+
+        <!-- Acts Section -->
+        <div class="ci-section">
+            <h3 class="ci-title" onclick="toggleContent(this)">Acts</h3>
+            <div class="ci-content">
+                <ul>
+                    {% for act in acts %}
+                        <li>{{ act.act_name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sections Section -->
+        <div class="ci-section">
+            <h3 class="ci-title" onclick="toggleContent(this)">Sections</h3>
+            <div class="ci-content">
+                <ul>
+                    {% for section in sections %}
+                        <li>{{ section.section_name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Witnesses Section -->
+        <div class="ci-section">
+            <h3 class="ci-title" onclick="toggleContent(this)">Witnesses</h3>
+            <div class="ci-content">
+                <ul>
+                    {% for witness in witnesses %}
+                        <li>{{ witness.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Court Details Section -->
+        <div class="ci-section">
+            <h3 class="ci-title" onclick="toggleContent(this)">Court Details</h3>
+            <div class="ci-content">
+                <p>Court ID: {{ court_details.court_id }}</p>
+                <p>Lawyer ID: {{ court_details.lawyer_id }}</p>
+                <p>Judge ID: {{ court_details.judge_id }}</p>
+                <p>Hearing Date: {{ court_details.hearing_date }}</p>
+                <p>Location: {{ court_details.court_location }}</p>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

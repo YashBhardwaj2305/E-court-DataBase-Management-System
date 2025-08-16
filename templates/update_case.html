@@ -1,0 +1,148 @@
+{% extends "layout.html" %}
+{% block content %}
+<main>
+    <div class="create">
+    <u><h1>Update Case Form</h1></u>
+    <form action="/home/update_case/{{ case_details.cnr_no }}" method="POST">
+        <!-- Case Details -->
+        <div class="form-section" id="case-details">
+            <h2>Case Details</h2>
+            <label for="cnr_no">CNR No. *</label>
+            <input type="text" id="cnr_no" name="cnr_no" value="{{ case_details.cnr_no }}" required readonly>
+
+            <label for="case_no">Case No. *</label>
+            <input type="text" id="case_no" name="case_no" value="{{ case_details.case_no }}" required>
+
+            <label for="status_id">Status ID *</label>
+            <input type="text" id="status_id" name="status_id" value="{{ case_details.status_id }}" required>
+
+            <label for="status">Status *</label>
+            <select id="status" name="status" required>
+                <option value="Pending" {% if case_details.status == 'Pending' %}selected{% endif %}>Pending</option>
+                <option value="Disposed" {% if case_details.status == 'Disposed' %}selected{% endif %}>Disposed</option>
+            </select>
+
+            <label for="fir_no">FIR No. *</label>
+            <input type="text" id="fir_no" name="fir_no" value="{{ case_details.fir_no }}" required>
+
+            <label for="file_name">Prosecutor File Name *</label>
+            <input type="text" id="file_name" name="file_name" value="{{ case_details.file_name }}" required>
+            
+            <button type="reset" class="reset-btn" onclick="resetSection('case-details')">Reset</button>
+        </div>
+
+        <!-- Prosecutor Details -->
+        <div class="form-section" id="prosecutor-details">
+            <h2>Prosecutor Details</h2>
+            <label for="prosecutor_name">Prosecutor Name</label>
+            <input type="text" id="prosecutor_name" name="prosecutor_name" value="{{ prosecutor_details.name }}">
+
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" value="{{ prosecutor_details.age }}">
+
+            <label for="sex">Sex *</label>
+            <select id="sex" name="sex" required>
+                <option value="Male" {% if prosecutor_details.sex == 'Male' %}selected{% endif %}>Male</option>
+                <option value="Female" {% if prosecutor_details.sex == 'Female' %}selected{% endif %}>Female</option>
+                <option value="Other" {% if prosecutor_details.sex == 'Other' %}selected{% endif %}>Other</option>
+            </select>
+
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" value="{{ prosecutor_details.address }}">
+
+            <label for="phone_numbers">Phone Numbers</label>
+            <div id="phone-numbers-container">
+                {% for phone in phone_numbers_details %}
+                    <input type="text" name="phone_number[]" value="{{ phone.number }}" placeholder="Enter Phone Number">
+                {% endfor %}
+                <button type="button" class="add-field" onclick="addField('phone-numbers')">+</button>
+            </div>
+            <button type="reset" class="reset-btn" onclick="resetSection('prosecutor-details')">Reset</button>
+        </div>
+
+        <!-- Police Station Details -->
+        <div class="form-section" id="police-station-details">
+            <h2>Police Station Details</h2>
+            <label for="station_name">Station Name *</label>
+            <input type="text" id="station_name" name="station_name" value="{{ police_station_details.station_name }}" required>
+
+            <label for="inspector_name">Inspector Name</label>
+            <input type="text" id="inspector_name" name="inspector_name" value="{{ police_station_details.inspector_name }}">
+
+            <label for="fir_date">FIR Date</label>
+            <input type="date" id="fir_date" name="fir_date" value="{{ police_station_details.fir_date }}">
+
+            <button type="reset" class="reset-btn" onclick="resetSection('police-station-details')">Reset</button>
+        </div>
+
+        <!-- Case History Details -->
+        <div class="form-section" id="case-history-details">
+            <h2>Case History Details</h2>
+            <label for="incident_location">Incident Location *</label>
+            <input type="text" id="incident_location" name="incident_location" value="{{ case_history_details.incident_location }}" required>
+
+            <label for="defence_name">Defence Name</label>
+            <input type="text" id="defence_name" name="defence_name" value="{{ case_history_details.defence_name }}">
+
+            <label for="witness_name">Witness Name</label>
+            <div id="witnesses-container">
+                {% for witness in case_history_details.witnesses %}
+                <input type="text" name="witness_name[]" value="{{ witness.name }}">
+                {% endfor %}
+                <button type="button" class="add-field" onclick="addField('witnesses')">+</button>
+            </div>
+
+            <label for="acts">Acts</label>
+            <div id="acts-container">
+                {% for act in case_history_details.acts %}
+                <input type="text" name="act_name[]" value="{{ act.act_name }}">
+                {% endfor %}
+                <button type="button" class="add-field" onclick="addField('acts')">+</button>
+            </div>
+
+            <label for="sections">Sections</label>
+            <div id="sections-container">
+                {% for section in case_history_details.sections %}
+                <input type="text" name="section_name[]" value="{{ section.section_name }}">
+                {% endfor %}
+                <button type="button" class="add-field" onclick="addField('sections')">+</button>
+            </div>
+
+            <label for="incident_date">Incident Date</label>
+            <input type="date" id="incident_date" name="incident_date" value="{{ case_history_details.incident_date }}">
+
+            <label for="incident_time">Incident Time</label>
+            <input type="time" id="incident_time" name="incident_time" value="{{ case_history_details.incident_time }}">
+
+            <button type="reset" class="reset-btn" onclick="resetSection('case-history-details')">Reset</button>
+        </div>
+
+        <!-- Court Details -->
+        <div class="form-section" id="c-details">
+            <h2>Court Details</h2>
+            <label for="court_id">Court ID</label>
+            <input type="text" id="court_id" name="court_id" value="{{ court_details.court_id }}">
+
+            <label for="lawyer_id">Lawyer ID</label>
+            <input type="text" id="lawyer_id" name="lawyer_id" value="{{ court_details.lawyer_id }}">
+
+            <label for="judge_id">Judge ID</label>
+            <input type="text" id="judge_id" name="judge_id" value="{{ court_details.judge_id }}">
+
+            <label for="hearing_date">Hearing Date</label>
+            <input type="date" id="hearing_date" name="hearing_date" value="{{ court_details.hearing_date }}">
+
+            <label for="court_location">Court Location</label>
+            <input type="text" id="court_location" name="court_location" value="{{ court_details.court_location }}">
+
+            <button type="reset" class="reset-btn" onclick="resetSection('court-details')">Reset</button>
+        </div>
+
+        <!-- Final Submit Button -->
+        <div class="form-section">
+            <button type="submit" class="submit-btn">Update</button>
+        </div>
+    </form>
+</div>
+</main>
+{% endblock %}

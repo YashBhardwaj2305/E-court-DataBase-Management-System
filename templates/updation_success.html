@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<lead>
+<main>
+    <h1>Form Updated Successfully!</h1>
+    <p>Your case has been Updated. You can now add/update another case or perform other actions.</p>
+    
+    <a href="{{ url_for('search_case') }}">
+        <button>Submit Another Case</button>
+    </a>
+</main>
+</lead>
+{% endblock %}

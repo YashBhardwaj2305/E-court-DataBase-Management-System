@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<lead>
+<main>
+    <h1>New Admin Registered Successfully!</h1>
+    <p>Admin has been Registered. You can now add another admin or perform other actions on home page.</p>
+    
+    <a href="{{ url_for('admins') }}">
+        <button>Register New Admin</button>
+    </a>
+</main>
+</lead>
+{% endblock %}

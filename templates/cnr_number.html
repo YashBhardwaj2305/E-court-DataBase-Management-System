@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+<lead>
+<main>
+    <div class="search-form">
+        <h2>Search Case by CNR Number</h2>
+        <form action="{{ url_for('cnr_number') }}" method="post">
+            <input type="text" name="cnr_no" placeholder="Enter CNR Number" required>
+            <button type="submit">Search</button>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </div>
+</main>
+</lead>
+{% endblock %}

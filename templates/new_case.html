@@ -1,0 +1,149 @@
+{% extends "layout.html" %}
+{% block content %}
+<main>
+    <div class="create">
+        <u><h1>Case Details Form</h1></u>
+        <form action="/home/create_a_new_case" method="POST">
+            <!-- Case Details -->
+            <div class="form-section" id="case-details">
+                <h2>Case Details</h2>
+                <label for="cnr_no">CNR No. *</label>
+                <input type="text" id="cnr_no" name="cnr_no" placeholder="Enter CNR No." required>
+
+                <label for="case_no">Case No. *</label>
+                <input type="text" id="case_no" name="case_no" placeholder="Enter Case No." required>
+
+                <label for="status_id">Status ID *</label>
+                <input type="text" id="status_id" name="status_id" placeholder="Enter Status ID" required>
+
+                <label for="status">Status *</label>
+                <select id="status" name="status" required>
+                    <option value="">Select Status</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Disposed">Disposed</option>
+                </select>
+
+                <label for="fir_no">FIR No. *</label>
+                <input type="text" id="fir_no" name="fir_no" placeholder="Enter FIR No." required>
+
+                <label for="file_name">Prosecutor File Name *</label>
+                <input type="text" id="file_name" name="file_name" placeholder="Enter Prosecutor File Name" required>
+                
+                <!-- Reset for Case Details -->
+                <button type="reset" class="reset-btn" onclick="resetSection('case-details')">Reset</button>
+            </div>
+
+            <!-- Prosecutor Details -->
+            <div class="form-section" id="prosecutor-details">
+                <h2>Prosecutor Details</h2>
+                <label for="prosecutor_name">Prosecutor Name</label>
+                <input type="text" id="prosecutor_name" name="prosecutor_name" placeholder="Enter Prosecutor Name">
+                
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" placeholder="Enter Age">
+
+                <label for="sex">Sex *</label>
+                <select id="sex" name="sex" required>
+                    <option value="">Select Sex</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" placeholder="Enter Address">
+
+                <label for="phone_numbers">Phone Numbers</label>
+                <div id="phone-numbers-container">
+                    <input type="text" id="phone_number" name="phone_number[]" placeholder="Enter Phone Number">
+                    <button type="button" class="add-field" onclick="addField('phone-numbers')">+</button>
+                </div>
+
+                <!-- Reset for Prosecutor Details -->
+                <button type="reset" class="reset-btn" onclick="resetSection('prosecutor-details')">Reset</button>
+            </div>
+
+            <!-- Police Station Details -->
+            <div class="form-section" id="police-station-details">
+                <h2>Police Station Details</h2>
+                <label for="station_name">Station Name *</label>
+                <input type="text" id="station_name" name="station_name" placeholder="Enter Station Name" required>
+
+                <label for="inspector_name">Inspector Name</label>
+                <input type="text" id="inspector_name" name="inspector_name" placeholder="Enter Inspector Name">
+
+                <label for="fir_date">FIR Date</label>
+                <input type="date" id="fir_date" name="fir_date">
+
+                <!-- Reset for Police Station Details -->
+                <button type="reset" class="reset-btn" onclick="resetSection('police-station-details')">Reset</button>
+            </div>
+
+            <!-- Case History Details -->
+            <div class="form-section" id="case-history-details">
+                <h2>Case History Details</h2>
+                <label for="incident_location">Incident Location *</label>
+                <input type="text" id="incident_location" name="incident_location" placeholder="Enter Incident Location" required>
+
+                <label for="defence_name">Defence Name</label>
+                <input type="text" id="defence_name" name="defence_name" placeholder="Enter Defence Name">
+
+                <label for="witness_name">Witness Name</label>
+                <div id="witnesses-container">
+                    <input type="text" id="witness_name" name="witness_name[]" placeholder="Enter Witness Name">
+                    <button type="button" class="add-field" onclick="addField('witnesses')">+</button>
+                </div>
+
+                <label for="acts">Acts</label>
+                <div id="acts-container">
+                    <input type="text" id="act_name" name="act_name[]" placeholder="Enter Act Name">
+                    <button type="button" class="add-field" onclick="addField('acts')">+</button>
+                </div>
+
+                <label for="sections">Sections</label>
+                <div id="sections-container">
+                    <input type="text" id="section_name" name="section_name[]" placeholder="Enter Section Name">
+                    <button type="button" class="add-field" onclick="addField('sections')">+</button>
+                </div>
+
+                <label for="incident_date">Incident Date</label>
+                <input type="date" id="incident_date" name="incident_date"><br><br>
+
+                <label for="incident_time">Incident time</label>
+                <input type="time" id="incident_time" name="incident_time">
+                <br><br>
+
+                <!-- Reset for Case History Details -->
+                <button type="reset" class="reset-btn" onclick="resetSection('case-history-details')">Reset</button>
+            </div>
+
+            <!-- Court Details -->
+            <div class="form-section" id="court-details">
+                <h2>Court Details</h2>
+                <label for="court_id">Court ID</label>
+                <input type="text" id="court_id" name="court_id" placeholder="Enter Court ID">
+
+                <label for="lawyer_id">Lawyer ID</label>
+                <input type="text" id="lawyer_id" name="lawyer_id" placeholder="Enter Lawyer ID">
+
+                <label for="judge_id">Judge ID</label>
+                <input type="text" id="judge_id" name="judge_id" placeholder="Enter Judge ID">
+
+                <label for="hearing_date">Hearing Date</label>
+                <input type="date" id="hearing_date" name="hearing_date">
+
+                <label for="court_location">Court Location</label>
+                <input type="text" id="court_location" name="court_location" placeholder="Enter Court Location">
+
+                <!-- Reset for Court Details -->
+                <button type="reset" class="reset-btn" onclick="resetSection('court-details')">Reset</button>
+            </div>
+
+            <!-- Final Submit Button -->
+            <div class="form-section">
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</main>
+{% endblock %}

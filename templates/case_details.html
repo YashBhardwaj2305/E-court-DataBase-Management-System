@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+    <main><br>
+        <h3>Search for your case with:</h3><br>
+        <ul class="nav flex-column MainMenu">
+            <li class="nav-item">
+                <a href="/cnr_number" class="nav-link " id="Cnr" >
+                    CNR Number
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="CS" href="/case_number">
+                    Case Number
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="CO" href="/file_name">
+                    File Name
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="CL" href="/fir_number">
+                    FIR Number
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="Cavet" href="/status_id">
+                    Status ID
+                </a>
+            </li>
+        </ul>
+    </main>
+{% endblock %}
